@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 
-namespace Aptacode.Interpolation.Interpolators.Bezier
+namespace Aptacode.Interpolatr.Bezier
 {
-    public abstract class VectorBezierInterpolator<TType> : IInterpolator<TType>
+    public abstract class VectorBezierInterpolator<TType> : IBezierInterpolator<TType>
     {
         public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, params TType[] points)
         {

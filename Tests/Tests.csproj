@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>Aptacode.InterpolationTests</AssemblyName>
+    <AssemblyName>Aptacode.Interpolatr.Tests</AssemblyName>
 
-    <RootNamespace>Aptacode.InterpolationTests</RootNamespace>
+    <RootNamespace>Aptacode.Interpolatr.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Interpolation\Interpolation.csproj" />
+    <ProjectReference Include="..\Interpolatr\Interpolatr.csproj" />
   </ItemGroup>
 
 </Project>

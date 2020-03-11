@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Aptacode.Interpolation
+namespace Aptacode.Interpolatr
 {
-    public interface IInterpolator<T>
+    public interface IBezierInterpolator<T>
     {
         IEnumerable<T> Interpolate(int stepCount, EaserFunction easer, params T[] points);
     }

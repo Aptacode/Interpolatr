@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 
-namespace Aptacode.Interpolation.Interpolators.Linear.Generic
+namespace Aptacode.Interpolatr.Linear.Generic
 {
-    public abstract class GenericVec4LinearInterpolator<T> : GenericVectorLinearInterpolator<T, Vector4>
+    public abstract class GenericVec4Interpolator<T> : GenericVectorInterpolator<T, Vector4>
     {
         public override Vector4 Subtract(Vector4 from, Vector4 to)
         {

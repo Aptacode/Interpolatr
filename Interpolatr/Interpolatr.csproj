@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Aptacode.Interpolation</AssemblyName>
-    <RootNamespace>Aptacode.Interpolation</RootNamespace>
+    <AssemblyName>Aptacode.Interpolatr</AssemblyName>
+    <RootNamespace>Aptacode.Interpolatr</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

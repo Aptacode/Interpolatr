@@ -1,10 +1,10 @@
 ﻿using System.Drawing;
 using System.Numerics;
-using Aptacode.Interpolation.Interpolators.Linear.Generic;
+using Aptacode.Interpolatr.Linear.Generic;
 
-namespace Aptacode.Interpolation.Interpolators.Linear
+namespace Aptacode.Interpolatr.Linear
 {
-    public sealed class PointLinearInterpolator : GenericVec2LinearInterpolator<Point>
+    public sealed class PointInterpolator : GenericVec2Interpolator<Point>
     {
         public override Point FromVector(Vector2 value)
         {

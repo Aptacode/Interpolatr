@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Aptacode.Interpolation.Interpolators.Linear
+namespace Aptacode.Interpolatr.Linear
 {
-    public sealed class IntLinearInterpolator : IInterpolator<int>
+    public sealed class IntInterpolator : ILinearInterpolator<int>
     {
         public IEnumerable<int> Interpolate(int stepCount, EaserFunction easer, params int[] points)
         {
@@ -36,15 +36,30 @@ namespace Aptacode.Interpolation.Interpolators.Linear
                     //Calculate how many steps this edge has
                     var edgeSteps = Math.Abs(edge) / velocity;
                     //Return a value for each step along this edge
-                    for (var stepIndex = 1; stepIndex < edgeSteps; stepIndex++)
+                    foreach (var value in Interpolate(edgeSteps, easer, pointA, pointB))
                     {
-                        yield return pointA + (int) (edge * easer(stepIndex, edgeSteps));
+                        yield return value;
                     }
-
-                    //Return the last point for this step
-                    yield return pointB;
                 }
             }
+        }
+
+        public IEnumerable<int> Interpolate(int stepCount, EaserFunction easer, int from, int to)
+        {
+            if (stepCount <= 0)
+            {
+                yield break;
+            }
+
+            var edgeLength = to - from;
+
+            for (var stepIndex = 1; stepIndex < stepCount; stepIndex++)
+            {
+                yield return from + (int) (edgeLength * easer(stepIndex, stepCount));
+            }
+
+            //Return the last point for this step
+            yield return to;
         }
 
         private static List<(int, int, int)> GetEdges(IEnumerable<int> keyPoints)

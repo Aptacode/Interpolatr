@@ -1,15 +1,14 @@
 ﻿using System.Linq;
-using Aptacode.Interpolation;
-using Aptacode.Interpolation.Interpolators.Linear;
+using Aptacode.Interpolatr.Linear;
 using NUnit.Framework;
 
-namespace Aptacode.InterpolationTests
+namespace Aptacode.Interpolatr.Tests
 {
     [TestFixture]
     public class InterpolatorTests
     {
-        private static readonly IntLinearInterpolator IntInterpolator = new IntLinearInterpolator();
-        private static readonly DoubleLinearInterpolator DoubleInterpolator = new DoubleLinearInterpolator();
+        private static readonly IntInterpolator IntInterpolator = new IntInterpolator();
+        private static readonly DoubleInterpolator DoubleInterpolator = new DoubleInterpolator();
 
         [Test]
         [TestCase(0, 0, 0, new double[] { })]
@@ -42,8 +41,8 @@ namespace Aptacode.InterpolationTests
         [TestCase(0, 1, 1, new[] {1})]
         [TestCase(1, 0, 1, new[] {0})]
         [TestCase(0, 0, 2, new[] {0, 0})]
-        [TestCase(0, 1, 2, new[] {1, 1})]
-        [TestCase(1, 0, 2, new[] {0, 0})]
+        [TestCase(0, 1, 2, new[] {0, 1})]
+        [TestCase(1, 0, 2, new[] {1, 0})]
         [TestCase(0, 100, 10, new[] {10, 20, 30, 40, 50, 60, 70, 80, 90, 100})]
         [TestCase(100, 0, 10, new[] {90, 80, 70, 60, 50, 40, 30, 20, 10, 0})]
         [TestCase(0, -10, 10, new[] {-1, -2, -3, -4, -5, -6, -7, -8, -9, -10})]

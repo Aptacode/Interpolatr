@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aptacode.Interpolation
+namespace Aptacode.Interpolatr
 {
     public delegate float EaserFunction(int index, int total);
 

@@ -1,10 +1,10 @@
 ﻿using System.Drawing;
 using System.Numerics;
-using Aptacode.Interpolation.Interpolators.Linear.Generic;
+using Aptacode.Interpolatr.Linear.Generic;
 
-namespace Aptacode.Interpolation.Interpolators.Linear
+namespace Aptacode.Interpolatr.Linear
 {
-    public sealed class ColorLinearInterpolator : GenericVec4LinearInterpolator<Color>
+    public sealed class ColorInterpolator : GenericVec4Interpolator<Color>
     {
         public override Vector4 ToVector(Color value)
         {

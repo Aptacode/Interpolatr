@@ -1,7 +1,6 @@
-﻿using Aptacode.Interpolation;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace Aptacode.InterpolationTests
+namespace Aptacode.Interpolatr.Tests
 {
     /// <summary>
     ///     Checks the ProgressAt(int, int) methods for each built in easer function return the correct value

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Aptacode.Interpolation.Interpolators.Linear
+namespace Aptacode.Interpolatr.Linear
 {
-    public sealed class DoubleLinearInterpolator : IInterpolator<double>
+    public sealed class DoubleInterpolator : ILinearInterpolator<double>
     {
         public IEnumerable<double> Interpolate(int stepCount, EaserFunction easer, params double[] points)
         {
@@ -32,14 +32,29 @@ namespace Aptacode.Interpolation.Interpolators.Linear
                 foreach (var (pointA, pointB, edge) in edges)
                 {
                     var edgeSteps = Math.Abs(edge) / velocity;
-                    for (var stepIndex = 1; stepIndex < edgeSteps; stepIndex++)
+                    foreach (var value in Interpolate((int) edgeSteps, easer, pointA, pointB))
                     {
-                        yield return pointA + edge * easer(stepIndex, (int) edgeSteps);
+                        yield return value;
                     }
-
-                    yield return pointB;
                 }
             }
+        }
+
+        public IEnumerable<double> Interpolate(int stepCount, EaserFunction easer, double from, double to)
+        {
+            if (stepCount <= 0)
+            {
+                yield break;
+            }
+
+            var edgeLength = to - from;
+
+            for (var stepIndex = 1; stepIndex < stepCount; stepIndex++)
+            {
+                yield return from + edgeLength * easer(stepIndex, stepCount);
+            }
+
+            yield return to;
         }
 
         private List<(double, double, double)> GetEdges(IEnumerable<double> keyPoints)
