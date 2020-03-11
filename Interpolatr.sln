@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interpolatr", "Interpolatr\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{EA049E17-C7BA-44E3-9779-395729921B49}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "WPF\WPF.csproj", "{C55F32E6-6598-4A64-90E5-A1D98BCF51E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EA049E17-C7BA-44E3-9779-395729921B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA049E17-C7BA-44E3-9779-395729921B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA049E17-C7BA-44E3-9779-395729921B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55F32E6-6598-4A64-90E5-A1D98BCF51E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55F32E6-6598-4A64-90E5-A1D98BCF51E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55F32E6-6598-4A64-90E5-A1D98BCF51E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55F32E6-6598-4A64-90E5-A1D98BCF51E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
