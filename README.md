@@ -3,6 +3,13 @@
 
 ### a lightweight cross platform .net tweening & Interpolation library.
 
+
+NuGet package:
+
+https://www.nuget.org/packages/Aptacode.Interpolatr/
+
+
+
 ## User Guide
 
 ### Code Example
