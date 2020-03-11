@@ -42,10 +42,10 @@ Easer functions are used to determine the rate at which a transformations value 
 
 #### EaseInOut
 
-![Alt Text](https://raw.githubusercontent.com/Timmoth/Aptacode.TaskPlex/master/Resources/demos/EaseInOut.gif)
+![Alt Text](https://raw.githubusercontent.com/Timmoth/Aptacode.Interpolatr/master/Resources/demos/EaseInOut.gif)
 
 #### Elastic
 
-![Alt Text](https://raw.githubusercontent.com/Timmoth/Aptacode.TaskPlex/master/Resources/demos/Elastic.gif)
+![Alt Text](https://raw.githubusercontent.com/Timmoth/Aptacode.Interpolatr/master/Resources/demos/Elastic.gif)
 
 
