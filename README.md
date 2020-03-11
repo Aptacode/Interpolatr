@@ -1,5 +1,7 @@
 
-# Interpolatr is a lightweight cross platform .net tweening & Interpolation library.
+# Interpolatr
+
+### a lightweight cross platform .net tweening & Interpolation library.
 
 ## User Guide
 
