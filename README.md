@@ -8,6 +8,7 @@ NuGet package:
 
 [![NuGet](https://img.shields.io/nuget/v/Aptacode.Interpolatr.svg?style=flat)](https://www.nuget.org/packages/Aptacode.Interpolatr/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/042b4cf9e73b4a46aa38c55c3d4c3b0c)](https://www.codacy.com/manual/Timmoth/Aptacode.Interpolatr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Timmoth/Aptacode.Interpolatr&amp;utm_campaign=Badge_Grade)
+![last commit](https://img.shields.io/github/last-commit/Timmoth/Aptacode.Interpolatr?style=flat-square&cacheSeconds=86000)
 
 
 ## User Guide
