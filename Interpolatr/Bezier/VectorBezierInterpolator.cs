@@ -7,7 +7,7 @@ namespace Aptacode.Interpolatr.Bezier
 {
     public abstract class VectorBezierInterpolator<TType> : IBezierInterpolator<TType>
     {
-        public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, params TType[] points)
+        public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, TType[] points)
         {
             if (stepCount <= 0)
             {
@@ -104,53 +104,34 @@ namespace Aptacode.Interpolatr.Bezier
             return edges.Sum(edge => GetLength(edge.Item3));
         }
 
-        public Vector2 Subtract(Vector2 from, Vector2 to)
-        {
-            return from - to;
-        }
+        public Vector2 Subtract(Vector2 from, Vector2 to) => from - to;
 
-        public Vector2 Normalize(Vector2 from)
-        {
-            return Vector2.Normalize(from);
-        }
+        public Vector2 Normalize(Vector2 from) => Vector2.Normalize(from);
 
-        public float GetLength(Vector2 vector)
-        {
-            return vector.Length();
-        }
+        public float GetLength(Vector2 vector) => vector.Length();
 
-        public Vector2 Add(Vector2 from, Vector2 to)
-        {
-            return Vector2.Add(from, to);
-        }
+        public Vector2 Add(Vector2 from, Vector2 to) => Vector2.Add(from, to);
 
-        public Vector2 Multiply(Vector2 from, float value)
-        {
-            return Vector2.Multiply(from, value);
-        }
+        public Vector2 Multiply(Vector2 from, float value) => Vector2.Multiply(from, value);
 
         // Parametric functions for drawing a degree 3 Bezier curve.
         private static float X(float t,
-            float x0, float x1, float x2, float x3)
-        {
-            return (float) (
+            float x0, float x1, float x2, float x3) =>
+            (float) (
                 x0 * Math.Pow(1 - t, 3) +
                 x1 * 3 * t * Math.Pow(1 - t, 2) +
                 x2 * 3 * Math.Pow(t, 2) * (1 - t) +
                 x3 * Math.Pow(t, 3)
             );
-        }
 
         private static float Y(float t,
-            float y0, float y1, float y2, float y3)
-        {
-            return (float) (
+            float y0, float y1, float y2, float y3) =>
+            (float) (
                 y0 * Math.Pow(1 - t, 3) +
                 y1 * 3 * t * Math.Pow(1 - t, 2) +
                 y2 * 3 * Math.Pow(t, 2) * (1 - t) +
                 y3 * Math.Pow(t, 3)
             );
-        }
 
         public abstract Vector2 ToVector(TType value);
         public abstract TType FromVector(Vector2 value);

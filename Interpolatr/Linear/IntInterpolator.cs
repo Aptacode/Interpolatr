@@ -6,7 +6,7 @@ namespace Aptacode.Interpolatr.Linear
 {
     public sealed class IntInterpolator : ILinearInterpolator<int>
     {
-        public IEnumerable<int> Interpolate(int stepCount, EaserFunction easer, params int[] points)
+        public IEnumerable<int> Interpolate(int stepCount, EaserFunction easer, int[] points)
         {
             if (stepCount <= 0)
             {
@@ -62,21 +62,20 @@ namespace Aptacode.Interpolatr.Linear
             yield return to;
         }
 
-        private static List<(int, int, int)> GetEdges(IEnumerable<int> keyPoints)
+        private static List<(int, int, int)> GetEdges(IReadOnlyList<int> keyPoints)
         {
-            var keyPointList = keyPoints.ToList();
             //Point A, Point B, Length
             var edges = new List<(int, int, int)>();
 
-            for (var i = 1; i < keyPointList.Count; i++)
+            for (var i = 1; i < keyPoints.Count; i++)
             {
-                edges.Add((keyPointList[i - 1], keyPointList[i], keyPointList[i] - keyPointList[i - 1]));
+                edges.Add((keyPoints[i - 1], keyPoints[i], keyPoints[i] - keyPoints[i - 1]));
             }
 
             return edges;
         }
 
-        public int TotalEdgeLength(IEnumerable<(int, int, int)> edges)
+        public int TotalEdgeLength(IReadOnlyList<(int, int, int)> edges)
         {
             return edges.Sum(edge => Math.Abs(edge.Item3));
         }

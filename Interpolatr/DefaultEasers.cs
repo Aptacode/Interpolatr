@@ -6,10 +6,7 @@ namespace Aptacode.Interpolatr
 
     public static class DefaultEasers
     {
-        public static float Linear(int index, int total)
-        {
-            return Percent(index, total);
-        }
+        public static float Linear(int index, int total) => Percent(index, total);
 
         public static float Elastic(int index, int total)
         {
