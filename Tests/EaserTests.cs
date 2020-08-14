@@ -12,14 +12,7 @@ namespace Aptacode.Interpolatr.Tests
         private static readonly EaserFunction LinearEaser = DefaultEasers.Linear;
 
         [Test]
-        [TestCase(0, 0, 1)]
         [TestCase(0, 100, 0)]
-        [TestCase(0, -1, 1)]
-        [TestCase(1, -1, 1)]
-        [TestCase(-1, 0, 0)]
-        [TestCase(-1, 1, 0)]
-        [TestCase(-1, 100, 0)]
-        [TestCase(-1, -1, 0)]
         [TestCase(0, 1, 0)]
         [TestCase(1, 1, 1)]
         [TestCase(1, 2, 0.5)]

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Aptacode.Interpolatr.Linear
@@ -31,7 +30,7 @@ namespace Aptacode.Interpolatr.Linear
                 //Yield a point for each step
                 foreach (var (pointA, pointB, edge) in edges)
                 {
-                    var edgeSteps = Math.Abs(edge) / velocity;
+                    var edgeSteps = edge / velocity;
                     foreach (var value in Interpolate((int) edgeSteps, easer, pointA, pointB))
                     {
                         yield return value;
@@ -58,22 +57,16 @@ namespace Aptacode.Interpolatr.Linear
             yield return to;
         }
 
-        private List<(double, double, double)> GetEdges(IReadOnlyList<double> keyPoints)
+        private static IEnumerable<(double, double, double)> GetEdges(IReadOnlyList<double> keyPoints)
         {
-            //Point A, Point B, Length
-            var edges = new List<(double, double, double)>();
-
             for (var i = 1; i < keyPoints.Count; i++)
             {
-                edges.Add((keyPoints[i - 1], keyPoints[i], keyPoints[i] - keyPoints[i - 1]));
+                var pointA = keyPoints[i - 1];
+                var pointB = keyPoints[i];
+                yield return (pointA, pointB, pointB - pointA);
             }
-
-            return edges;
         }
 
-        public double TotalEdgeLength(IReadOnlyList<(double, double, double)> edges)
-        {
-            return edges.Sum(edge => Math.Abs(edge.Item3));
-        }
+        public double TotalEdgeLength(IEnumerable<(double, double, double)> edges) => edges.Sum(edge => edge.Item3);
     }
 }

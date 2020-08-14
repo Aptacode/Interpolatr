@@ -5,23 +5,10 @@ namespace Aptacode.Interpolatr.Linear.Generic
 {
     public abstract class GenericVectorInterpolator<TType, TVector> : ILinearInterpolator<TType>
     {
-        public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, TType from, TType to)
-        {
-            if (stepCount <= 0)
-            {
-                yield break;
-            }
+        public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, TType from, TType to) =>
+            Interpolate(stepCount, easer, ToVector(from), ToVector(to));
 
-            var fromVector = ToVector(from);
-            var toVector = ToVector(from);
-
-            foreach (var value in Interpolate(stepCount, easer, fromVector, toVector))
-            {
-                yield return value;
-            }
-        }
-
-        public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, params TType[] points)
+        public IEnumerable<TType> Interpolate(int stepCount, EaserFunction easer, TType[] points)
         {
             if (stepCount <= 0)
             {
@@ -29,7 +16,7 @@ namespace Aptacode.Interpolatr.Linear.Generic
             }
 
             //Get the list of edges
-            var edges = GetEdges(points);
+            var edges = GetEdges(points.Select(ToVector).ToArray());
 
             //Calculate the total length to travel
             var velocity = TotalEdgeLength(edges) / stepCount;
@@ -85,31 +72,25 @@ namespace Aptacode.Interpolatr.Linear.Generic
             yield return FromVector(to);
         }
 
-        private List<(TVector, TVector, TVector)> GetEdges(IEnumerable<TType> keyPoints)
+        private IEnumerable<(TVector, TVector, TVector)> GetEdges(IReadOnlyList<TVector> keyPoints)
         {
-            var keyPointList = keyPoints.Select(ToVector).ToList();
-            //Point A, Point B, Length
-            var edges = new List<(TVector, TVector, TVector)>();
-
-            for (var i = 1; i < keyPointList.Count; i++)
+            for (var i = 1; i < keyPoints.Count; i++)
             {
-                edges.Add((keyPointList[i - 1], keyPointList[i], Subtract(keyPointList[i], keyPointList[i - 1])));
+                var pointA = keyPoints[i - 1];
+                var pointB = keyPoints[i];
+                yield return (pointA, pointB, Subtract(pointB, pointA));
             }
-
-            return edges;
         }
 
-        public float TotalEdgeLength(IEnumerable<(TVector, TVector, TVector)> edges)
-        {
-            return edges.Sum(edge => GetLength(edge.Item3));
-        }
+        public float TotalEdgeLength(IEnumerable<(TVector, TVector, TVector)> edges) =>
+            edges.Sum(edge => GetLength(edge.Item3));
 
         public abstract float GetLength(TVector vector);
-        public abstract TVector Subtract(TVector from, TVector to);
-        public abstract TVector Add(TVector from, TVector to);
-        public abstract TVector Multiply(TVector from, float value);
-        public abstract TVector Normalize(TVector from);
+        public abstract TVector Subtract(TVector left, TVector right);
+        public abstract TVector Add(TVector left, TVector right);
+        public abstract TVector Multiply(TVector vector, float value);
+        public abstract TVector Normalize(TVector vector);
         public abstract TVector ToVector(TType value);
-        public abstract TType FromVector(TVector value);
+        public abstract TType FromVector(TVector vector);
     }
 }
